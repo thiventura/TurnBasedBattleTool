@@ -1,48 +1,53 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import fire from './fire'
+import Fight from './components/Fight'
+
 
 class App extends Component {
 
   constructor () {
     super();
+
     this.state = {
-      image: ""
+      option1: null,
+      option2: null
     };
   }
 
   componentWillMount() {
-    this.getImage();
-  }
-
-  getImage = () => {
-    var database = fire.database();
-  
-    database.ref('/pokemons/Charmander').once('value')
-      .then((snapshot) => {
-        var imageCharmander = (snapshot.val() && snapshot.val().imagem) || 'https://i.ytimg.com/vi/NiEABxi8G4U/maxresdefault.jpg';
-        console.log(imageCharmander);
-        this.setState ({
-          image: imageCharmander
-        });
+    this.loadPlayer ("Charmander").then( creature => {
+      creature.name = "Charmander";
+      this.setState({
+        option1: creature
+      });
     });
 
+    this.loadPlayer ("Bulbasaur").then( creature => {
+      creature.name = "Bulbasaur";
+      this.setState({
+        option2: creature
+      });
+    });
+  }
+
+  loadPlayer = async name => {
+    const snapshot = await fire.database()
+      .ref('/creatures/' + name)
+      .once('value');
+  
+    return snapshot ? snapshot.val() : null;
   }
 
   render() {
-
-    
-
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={this.state.image} alt="test" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To Poke started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        { 
+          this.state.option1 && this.state.option2 ?
+            <Fight option1={this.state.option1} option2={this.state.option2} />
+            :
+            <div></div>
+        }
       </div>
     );
   }
