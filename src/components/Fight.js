@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Grid from '@material-ui/core/Grid';
 import Card from './Card'
 
 class Fight extends Component {
@@ -16,7 +17,12 @@ class Fight extends Component {
 
   render() {
     return (
-      <div>
+      <Grid
+        container
+        direction="row"
+        justify="space-evenly"
+        alignItems="center"
+      >
         <Card 
           name={this.state.player1.name} 
           image={this.state.player1.image}
@@ -32,7 +38,7 @@ class Fight extends Component {
           energy={this.state.player2.energy}
           walk={this.state.player2.walk}
           moves={this.state.player2.moves} />
-      </div>
+      </Grid>
     );
   }
 }

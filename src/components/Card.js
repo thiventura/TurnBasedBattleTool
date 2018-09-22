@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import Badge from '@material-ui/core/Badge';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import BatteryChargingFullIcon from '@material-ui/icons/BatteryChargingFull';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Battery30Icon from '@material-ui/icons/Battery30';
+import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+
 
 class Card extends Component {
 
@@ -23,13 +31,19 @@ class Card extends Component {
 
         <br/><br/>
 
-        Vida: {this.state.life}
-        <br/>
+        <Badge badgeContent={this.state.life} color="primary">
+          <FavoriteIcon />
+        </Badge>
 
-        Energia: {this.state.energy}
-        <br/>
+        <Badge badgeContent={this.state.energy} color="primary">
+          <BatteryChargingFullIcon />
+        </Badge>
 
-        Deslocamento: {this.state.walk}
+        <Badge badgeContent={this.state.walk} color="primary">
+          <ArrowForwardIcon />
+        </Badge>
+        
+
         <br/>
 
         Movimentos:
@@ -38,9 +52,19 @@ class Card extends Component {
           Object.keys(this.state.moves).map(key => 
             <div key={key}>
               {this.state.moves[key].name}
-              {this.state.moves[key].range}
-              {this.state.moves[key].damage}
-              {this.state.moves[key].energy}
+
+              <Badge badgeContent={this.state.moves[key].damage} color="primary">
+                <WhatshotIcon />
+              </Badge>
+
+              <Badge badgeContent={this.state.moves[key].range} color="primary">
+                <ZoomOutMapIcon />
+              </Badge>
+
+              <Badge badgeContent={this.state.moves[key].energy} color="primary">
+                <Battery30Icon />
+              </Badge>
+              
               <br/>
             </div>
           )

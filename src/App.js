@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import CssBaseline from '@material-ui/core/CssBaseline'
 import fire from './fire'
 import Fight from './components/Fight'
 
@@ -41,14 +41,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        { 
+      <React.Fragment>
+        <CssBaseline />
+        {
           this.state.option1 && this.state.option2 ?
             <Fight option1={this.state.option1} option2={this.state.option2} />
             :
-            <div></div>
-        }
-      </div>
+            <div></div>}
+      </React.Fragment>
     );
   }
 }
