@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import fire from './fire'
 import Fight from './components/Fight'
+import Selection from './components/Selection'
 
 
 class App extends Component {
@@ -39,10 +40,16 @@ class App extends Component {
     return snapshot ? snapshot.val() : null;
   }
 
+  creatureSelected = (player, creature) => {
+    console.log(player);
+    console.log(creature);
+  }
+
   render() {
     return (
       <React.Fragment>
         <CssBaseline />
+        <Selection player="1" creatureSelected={this.creatureSelected} />
         {
           this.state.option1 && this.state.option2 ?
             <Fight option1={this.state.option1} option2={this.state.option2} />
