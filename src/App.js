@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
-import fire from './fire'
 import Fight from './components/Fight'
-import Selection from './components/Selection'
+import SelectionPanel from './components/SelectionPanel'
 
 
 class App extends Component {
@@ -16,45 +15,28 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    this.loadPlayer ("Charmander").then( creature => {
-      creature.name = "Charmander";
+  creatureSelected = (player, creature) => {
+    if (player === "1") {
       this.setState({
         option1: creature
       });
-    });
-
-    this.loadPlayer ("Bulbasaur").then( creature => {
-      creature.name = "Bulbasaur";
+    } else {
       this.setState({
         option2: creature
       });
-    });
-  }
-
-  loadPlayer = async name => {
-    const snapshot = await fire.database()
-      .ref('/creatures/' + name)
-      .once('value');
-  
-    return snapshot ? snapshot.val() : null;
-  }
-
-  creatureSelected = (player, creature) => {
-    console.log(player);
-    console.log(creature);
+    }
   }
 
   render() {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Selection player="1" creatureSelected={this.creatureSelected} />
         {
           this.state.option1 && this.state.option2 ?
             <Fight option1={this.state.option1} option2={this.state.option2} />
-            :
-            <div></div>}
+          :
+            <SelectionPanel creatureSelected={this.creatureSelected} />
+        }
       </React.Fragment>
     );
   }
