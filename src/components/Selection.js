@@ -31,7 +31,9 @@ class Selection extends Component {
     return snapshot ? snapshot.val() : null;
   }
 
-  handleSelection = creature => {
+  handleSelection = (name, creature) => {
+    creature.name = name;
+
     this.setState({
       selected: creature
     });
@@ -53,7 +55,7 @@ class Selection extends Component {
 
               Object.keys(this.state.creatures).map(creature => (
                 <ButtonBase
-                  onClick={ e => {this.handleSelection(this.state.creatures[creature])}}
+                  onClick={ e => {this.handleSelection(creature, this.state.creatures[creature])}}
                   type='submit'
                   focusRipple
                   key={creature}
