@@ -4,6 +4,7 @@ import Badge from '@material-ui/core/Badge';
 import Battery30Icon from '@material-ui/icons/Battery30';
 import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
+import Button from '@material-ui/core/Button';
 
 class Movement extends Component {
 
@@ -11,32 +12,39 @@ class Movement extends Component {
     super(props);
 
     this.state = {
-      move: props.move
+      move: props.move,
+      doAttack: props.doAttack
     }
+  }
+
+  handleClickMove = move => {
+    this.state.doAttack (move);
   }
 
   render() {
     return (
-      [
-        <Grid item xs={6}>
+      <Grid item xs={12}>
+
+        <Button 
+          variant="outlined" 
+          color="secondary" 
+          onClick={ e => {this.handleClickMove(this.state.move)}} 
+          type='submit'>
+
           {this.state.move.name}
-        </Grid>,
-        <Grid item xs={2}>
           <Badge badgeContent={this.state.move.damage} color="primary">
             <WhatshotIcon fontSize="large" />
           </Badge>
-        </Grid>,
-        <Grid item xs={2}>
           <Badge badgeContent={this.state.move.range} color="primary">
             <ZoomOutMapIcon fontSize="large" />
           </Badge>
-        </Grid>,
-        <Grid item xs={2}>
           <Badge badgeContent={this.state.move.energy} color="primary">
             <Battery30Icon fontSize="large" />
           </Badge>
-        </Grid>
-      ]
+
+        </Button>
+
+      </Grid>
     );
   }
 }

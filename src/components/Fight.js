@@ -15,6 +15,44 @@ class Fight extends Component {
     };
   }
 
+  setLife = (player, life) => {
+    const playerUpdated = player === 1 ? this.state.player1 : this.state.player2;
+
+    playerUpdated.life -= life;
+    if (playerUpdated.life < 0) 
+      playerUpdated.life = 0;
+
+    if (player === 1) {
+      this.setState({
+        player1: playerUpdated
+      });
+    } else {
+      this.setState({
+        player2: playerUpdated
+      });
+    }
+  }
+
+  setEnergy = (player, energy) => {
+    const playerUpdated = player === 1 ? this.state.player1 : this.state.player2;
+
+    playerUpdated.energy -= energy;
+    if (playerUpdated.energy < 0) 
+      playerUpdated.energy = 0;
+
+    if (player === 1) {
+      this.setState({
+        player1: playerUpdated
+      });
+    } else {
+      
+      playerUpdated.energy -= energy;
+      this.setState({
+        player2: playerUpdated
+      });
+    }
+  }
+
   render() {
     return (
       <Grid
@@ -29,7 +67,10 @@ class Fight extends Component {
           life={this.state.player1.life}
           energy={this.state.player1.energy}
           walk={this.state.player1.walk}
-          moves={this.state.player1.moves} />
+          moves={this.state.player1.moves}
+          player={1}
+          setLife={this.setLife} 
+          setEnergy={this.setEnergy}/>
 
         <Card 
           name={this.state.player2.name} 
@@ -37,7 +78,10 @@ class Fight extends Component {
           life={this.state.player2.life}
           energy={this.state.player2.energy}
           walk={this.state.player2.walk}
-          moves={this.state.player2.moves} />
+          moves={this.state.player2.moves}
+          player={2}
+          setLife={this.setLife} 
+          setEnergy={this.setEnergy}/>
       </Grid>
     );
   }

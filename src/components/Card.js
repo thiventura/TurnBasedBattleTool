@@ -19,8 +19,30 @@ class Card extends Component {
       life: props.life,
       energy: props.energy,
       walk: props.walk,
-      moves: props.moves
+      moves: props.moves,
+      player: props.player,
+      setLife: props.setLife,
+      setEnergy: props.setEnergy
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      life: nextProps.life,
+      energy: nextProps.energy
+    });
+  }
+
+  attacked = (move, hit) => {
+    this.state.setEnergy (this.state.player, move.energy);
+
+    if (hit) {
+      if (this.state.player === 1) {
+        this.state.setLife (2, move.damage);
+      } else {
+        this.state.setLife (1, move.damage);
+      }
+    }
   }
 
   render() {
@@ -53,7 +75,7 @@ class Card extends Component {
             </Grid>
 
             <Grid item xs={12}>
-              <Movements moves={this.state.moves} />
+              <Movements moves={this.state.moves} attacked={this.attacked} />
             </Grid>
           </Grid>
           
