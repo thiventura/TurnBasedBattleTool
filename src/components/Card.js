@@ -43,6 +43,13 @@ class Card extends Component {
         this.state.setLife (1, move.damage);
       }
     }
+
+    // new turn, +1 enemy energy 
+    if (this.state.player === 1) {
+      this.state.setEnergy (2, -1);
+    } else {
+      this.state.setEnergy (1, -1);
+    }
   }
 
   render() {

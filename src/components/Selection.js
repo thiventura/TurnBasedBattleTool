@@ -33,6 +33,7 @@ class Selection extends Component {
 
   handleSelection = (name, creature) => {
     creature.name = name;
+    creature.maxEnergy = creature.energy;
 
     this.setState({
       selected: creature

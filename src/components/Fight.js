@@ -35,10 +35,13 @@ class Fight extends Component {
 
   setEnergy = (player, energy) => {
     const playerUpdated = player === 1 ? this.state.player1 : this.state.player2;
-
     playerUpdated.energy -= energy;
+
     if (playerUpdated.energy < 0) 
       playerUpdated.energy = 0;
+
+    if (playerUpdated.energy > playerUpdated.maxEnergy) 
+      playerUpdated.energy = playerUpdated.maxEnergy;
 
     if (player === 1) {
       this.setState({
