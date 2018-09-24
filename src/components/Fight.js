@@ -45,8 +45,6 @@ class Fight extends Component {
         player1: playerUpdated
       });
     } else {
-      
-      playerUpdated.energy -= energy;
       this.setState({
         player2: playerUpdated
       });

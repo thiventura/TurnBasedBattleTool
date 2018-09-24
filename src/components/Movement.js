@@ -13,8 +13,15 @@ class Movement extends Component {
 
     this.state = {
       move: props.move,
+      playerEnergy: props.playerEnergy,
       doAttack: props.doAttack
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      playerEnergy: nextProps.playerEnergy
+    });
   }
 
   handleClickMove = move => {
@@ -28,6 +35,7 @@ class Movement extends Component {
         <Button 
           variant="outlined" 
           color="secondary" 
+          disabled={this.state.playerEnergy < this.state.move.energy}
           onClick={ e => {this.handleClickMove(this.state.move)}} 
           type='submit'>
 

@@ -75,7 +75,7 @@ class Card extends Component {
             </Grid>
 
             <Grid item xs={12}>
-              <Movements moves={this.state.moves} attacked={this.attacked} />
+              <Movements moves={this.state.moves} playerEnergy={this.state.energy} attacked={this.attacked} />
             </Grid>
           </Grid>
           

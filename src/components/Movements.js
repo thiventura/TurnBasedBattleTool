@@ -14,10 +14,17 @@ class Movements extends Component {
 
     this.state = {
       moves: props.moves,
+      playerEnergy: props.playerEnergy,
       openDialog: false,
       attacked: props.attacked,
       move: null
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      playerEnergy: nextProps.playerEnergy
+    });
   }
 
   doAttack = (move) => {
@@ -53,7 +60,11 @@ class Movements extends Component {
         <Grid container spacing={24}>
           {
             Object.keys(this.state.moves).map(key => 
-              <Movement move={this.state.moves[key]} doAttack={this.doAttack} key={key} />
+              <Movement 
+                move={this.state.moves[key]} 
+                playerEnergy={this.state.playerEnergy} 
+                doAttack={this.doAttack} 
+                key={key} />
             )}
         </Grid>
         <Dialog
