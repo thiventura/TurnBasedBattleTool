@@ -22,7 +22,8 @@ class Card extends Component {
       moves: props.moves,
       player: props.player,
       setLife: props.setLife,
-      setEnergy: props.setEnergy
+      setEnergy: props.setEnergy,
+      changeTurn: props.changeTurn 
     };
   }
 
@@ -50,6 +51,8 @@ class Card extends Component {
     } else {
       this.state.setEnergy (1, -1);
     }
+
+    this.state.changeTurn();
   }
 
   render() {

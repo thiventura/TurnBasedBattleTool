@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
+import Slide from '@material-ui/core/Slide';
 import Card from './Card'
 
 class Fight extends Component {
@@ -7,11 +7,10 @@ class Fight extends Component {
   constructor (props) {
     super(props);
 
-    const coin = Math.random() > 0.5;
-
     this.state = {
-      player1: coin ? props.option1 : props.option2,
-      player2: coin ? props.option2 : props.option1
+      player1: props.option1,
+      player2: props.option2,
+      turnPlayer1: Math.random() > 0.5
     };
   }
 
@@ -54,36 +53,53 @@ class Fight extends Component {
     }
   }
 
+  changeTurn = () => {
+    this.setState({
+      turnPlayer1: !this.state.turnPlayer1
+    });
+  }
+
   render() {
     return (
-      <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="center"
-      >
-        <Card 
-          name={this.state.player1.name} 
-          image={this.state.player1.image}
-          life={this.state.player1.life}
-          energy={this.state.player1.energy}
-          walk={this.state.player1.walk}
-          moves={this.state.player1.moves}
-          player={1}
-          setLife={this.setLife} 
-          setEnergy={this.setEnergy}/>
-
-        <Card 
-          name={this.state.player2.name} 
-          image={this.state.player2.image}
-          life={this.state.player2.life}
-          energy={this.state.player2.energy}
-          walk={this.state.player2.walk}
-          moves={this.state.player2.moves}
-          player={2}
-          setLife={this.setLife} 
-          setEnergy={this.setEnergy}/>
-      </Grid>
+      <div>
+        <Slide 
+          direction="right" 
+          in={this.state.turnPlayer1} 
+          mountOnEnter 
+          unmountOnExit
+          style={{ transitionDelay: this.state.turnPlayer1 ? 500 : 0 }} >
+          <Card 
+            name={this.state.player1.name} 
+            image={this.state.player1.image}
+            life={this.state.player1.life}
+            energy={this.state.player1.energy}
+            walk={this.state.player1.walk}
+            moves={this.state.player1.moves}
+            player={1}
+            setLife={this.setLife} 
+            setEnergy={this.setEnergy}
+            changeTurn={this.changeTurn} />
+        </Slide>
+        <Slide 
+          direction="left" 
+          in={!this.state.turnPlayer1} 
+          mountOnEnter 
+          unmountOnExit
+          style={{ transitionDelay: this.state.turnPlayer1 ? 0 : 500 }} >
+          <Card 
+            name={this.state.player2.name} 
+            image={this.state.player2.image}
+            life={this.state.player2.life}
+            energy={this.state.player2.energy}
+            walk={this.state.player2.walk}
+            moves={this.state.player2.moves}
+            player={2}
+            setLife={this.setLife} 
+            setEnergy={this.setEnergy}
+            changeTurn={this.changeTurn} />
+        </Slide>
+      </div>
+      
     );
   }
 }
