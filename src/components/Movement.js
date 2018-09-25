@@ -30,30 +30,48 @@ class Movement extends Component {
 
   render() {
     return (
-      <Grid item xs={12}>
+      <Grid item xs={6}>
 
         <Button 
           variant="outlined" 
           color="secondary" 
+          fullWidth={true}
           disabled={this.state.playerEnergy < this.state.move.energy}
           onClick={ e => {this.handleClickMove(this.state.move)}} 
           type='submit'>
 
-          {this.state.move.name}
-          <Badge badgeContent={this.state.move.damage} color="primary">
-            <WhatshotIcon fontSize="large" />
-          </Badge>
-          <Badge badgeContent={this.state.move.range} color="primary">
-            <ZoomOutMapIcon fontSize="large" />
-          </Badge>
-          <Badge badgeContent={this.state.move.energy} color="primary">
-            <Battery30Icon fontSize="large" />
-          </Badge>
+          <div >
+            <h3>
+              {this.state.move.name}
+            </h3>
 
+            <Badge badgeContent={this.state.move.damage} color="primary" style={styles.badge}>
+              <WhatshotIcon fontSize="large" />
+            </Badge>
+            <Badge badgeContent={this.state.move.range} color="primary" style={styles.badge}>
+              <ZoomOutMapIcon fontSize="large" />
+            </Badge>
+            <Badge badgeContent={this.state.move.energy} color="primary" style={styles.badge}>
+              <Battery30Icon fontSize="large" />
+            </Badge>
+          </div>
+          
         </Button>
 
       </Grid>
     );
+  }
+}
+
+const styles = {
+  button: {
+    width: "45%"
+  },
+  div: {
+    width: "50%"
+  },
+  badge: {
+    margin: 10
   }
 }
 

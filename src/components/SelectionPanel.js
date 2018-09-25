@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Selection from './Selection'
 
 class SelectionPanel extends Component {
@@ -14,18 +14,29 @@ class SelectionPanel extends Component {
 
   render() {
     return (
-      <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="center">
+      <div style={styles.root}>
 
-        <Selection player="1" creatureSelected={this.state.creatureSelected} />
-        <Selection player="2" creatureSelected={this.state.creatureSelected} />
+        <Paper style={styles.paper} elevation={1}>
+          <Selection player="1" creatureSelected={this.state.creatureSelected} />
+        </Paper>
+
+        <Paper style={styles.paper} elevation={1}>
+          <Selection player="2" creatureSelected={this.state.creatureSelected} />
+        </Paper>
         
-      </Grid>
+      </div>
     );
   }
 }
+
+const styles = {
+  root: {
+    textAlign: "center"
+  },
+  paper: {
+    padding: 10,
+    margin: 20
+  }
+};
 
 export default SelectionPanel;
