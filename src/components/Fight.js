@@ -19,7 +19,7 @@ class Fight extends Component {
     const playerUpdated = player === 1 ? this.state.player1 : this.state.player2;
 
     playerUpdated.life -= life;
-    if (playerUpdated.life < 0) {
+    if (playerUpdated.life <= 0) {
       this.gameOver( player === 1 ? 2 : 1 );
       return;
     }
