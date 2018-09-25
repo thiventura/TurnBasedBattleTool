@@ -72,18 +72,18 @@ class Movements extends Component {
           disableEscapeKeyDown
           maxWidth="xs"
           open={this.state.openDialog}>
-          <DialogTitle id="confirmation-dialog-title">O inimigo está no alcance?</DialogTitle>
+          <DialogTitle id="confirmation-dialog-title">Can you reach the enemy?</DialogTitle>
           <DialogContent>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleYes} color="primary">
-              Sim
+              Yes
             </Button>
             <Button onClick={this.handleNo} color="primary">
-              Não
+              No
             </Button>
             <Button onClick={this.handleCancel} color="primary">
-              Cancelar
+              Cancel
             </Button>
           </DialogActions>
         </Dialog>
