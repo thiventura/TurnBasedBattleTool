@@ -10,6 +10,7 @@ class Fight extends Component {
     this.state = {
       player1: props.option1,
       player2: props.option2,
+      gameOver: props.gameOver,
       turnPlayer1: Math.random() > 0.5
     };
   }
@@ -18,8 +19,10 @@ class Fight extends Component {
     const playerUpdated = player === 1 ? this.state.player1 : this.state.player2;
 
     playerUpdated.life -= life;
-    if (playerUpdated.life < 0) 
-      playerUpdated.life = 0;
+    if (playerUpdated.life < 0) {
+      this.gameOver( player === 1 ? 2 : 1 );
+      return;
+    }
 
     if (player === 1) {
       this.setState({
@@ -36,8 +39,9 @@ class Fight extends Component {
     const playerUpdated = player === 1 ? this.state.player1 : this.state.player2;
     playerUpdated.energy -= energy;
 
-    if (playerUpdated.energy < 0) 
+    if (playerUpdated.energy < 0) {
       playerUpdated.energy = 0;
+    }
 
     if (playerUpdated.energy > playerUpdated.maxEnergy) 
       playerUpdated.energy = playerUpdated.maxEnergy;
@@ -57,6 +61,10 @@ class Fight extends Component {
     this.setState({
       turnPlayer1: !this.state.turnPlayer1
     });
+  }
+
+  gameOver = winner => {
+    this.state.gameOver (winner);
   }
 
   render() {
