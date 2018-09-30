@@ -1,0 +1,100 @@
+{
+  "creatures" : {
+    "Bulbasaur" : {
+      "energy" : 15,
+      "image" : "https://cdn.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/240px-001Bulbasaur.png",
+      "life" : 23,
+      "moves" : {
+        "chicotedevinha" : {
+          "damage" : 6,
+          "energy" : 6,
+          "name" : "Chicote de vinha",
+          "range" : 3
+        },
+        "folhagilete" : {
+          "damage" : 5,
+          "energy" : 4,
+          "name" : "Folha gilete",
+          "range" : 2
+        },
+        "mordida" : {
+          "damage" : 4,
+          "energy" : 2,
+          "name" : "Mordida",
+          "range" : 1
+        },
+        "patada" : {
+          "damage" : 2,
+          "energy" : 0,
+          "name" : "Patada",
+          "range" : 1
+        }
+      },
+      "walk" : 2
+    },
+    "Charmander" : {
+      "energy" : 17,
+      "image" : "https://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/240px-004Charmander.png",
+      "life" : 19,
+      "moves" : {
+        "arranhao" : {
+          "damage" : 2,
+          "energy" : 0,
+          "name" : "Arranhão",
+          "range" : 1
+        },
+        "brasa" : {
+          "damage" : 4,
+          "energy" : 3,
+          "name" : "Brasa",
+          "range" : 2
+        },
+        "lancachamas" : {
+          "damage" : 4,
+          "energy" : 4,
+          "name" : "Lança-chamas",
+          "range" : 3
+        },
+        "raiva" : {
+          "damage" : 5,
+          "energy" : 4,
+          "name" : "Raiva",
+          "range" : 2
+        }
+      },
+      "walk" : 3
+    },
+    "Squirtle" : {
+      "energy" : 14,
+      "image" : "https://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/240px-007Squirtle.png",
+      "life" : 22,
+      "moves" : {
+        "bolhas" : {
+          "damage" : 5,
+          "energy" : 5,
+          "name" : "Bolhas",
+          "range" : 3
+        },
+        "cabecada" : {
+          "damage" : 4,
+          "energy" : 2,
+          "name" : "Cabeçada",
+          "range" : 1
+        },
+        "jatodagua" : {
+          "damage" : 6,
+          "energy" : 6,
+          "name" : "Jato d'água",
+          "range" : 3
+        },
+        "patada" : {
+          "damage" : 2,
+          "energy" : 0,
+          "name" : "Patada",
+          "range" : 1
+        }
+      },
+      "walk" : 2
+    }
+  }
+}

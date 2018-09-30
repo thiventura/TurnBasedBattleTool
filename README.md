@@ -47,6 +47,7 @@ The structure of the database is a JSON like this:
 ```
 
 Some notes:
+- There is a sample in `db_samples`. 
 - You can put several creatures following the same structure. 
 - It is better to put 4 attacks for each creature. 
 - Images should be around 200x200 pixels
